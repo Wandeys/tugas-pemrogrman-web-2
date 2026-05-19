@@ -31,7 +31,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'name' => ['required','max:255'],
+        'email' => ['required','email'],
+        'phone' => ['required','numeric'],
+        'address' => ['required','max:255'],
+        'join_date' => ['required','date'],
+    ]);
+ 
+    
+    return redirect('/customer');
     }
 
     /**

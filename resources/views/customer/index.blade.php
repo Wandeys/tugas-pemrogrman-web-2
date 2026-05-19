@@ -5,6 +5,8 @@
         {{ $title }}
     </x-slot>
 
+    <a class="btn btn-primary mb-3" href="{{ route('customer.create') }}" role="button">Create</a>
+
     <ul class="list-group">
         @foreach ($customers as $customer)
             <li class="list-group-item">
