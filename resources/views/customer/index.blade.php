@@ -21,6 +21,14 @@
                 {{ $customer->name }}--{{ $customer->email }}--{{ $customer->phone }}--{{ $customer->address }}--{{ $customer->join_date }}
 
                 <a class="btn btn-warning btn-sm" href="{{ route('customer.edit', $customer) }}" role="button">edit</a>
+                <form action="{{ route('customer.destroy', $customer) }}" method="POST" class="d-inline">
+                    @method('DELETE')
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Are you sure/Anda Yakin?')">Delete</button>
+
+                </form>
 
             </li>
         @endforeach

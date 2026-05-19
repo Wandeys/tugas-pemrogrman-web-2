@@ -14,7 +14,7 @@ class CustomerController extends Controller
     {
          return view('customer.index', [
             'title' => 'Customer',
-            'customers'=> Customer::all(),
+            'customers'=> Customer::latest()->get(),
             ]);
     }
 
@@ -106,6 +106,7 @@ $customer->update( $validated );
      */
     public function destroy(Customer $customer)
     {
-        //
+$customer->delete( $customer );
+  return to_route('customer.index')->withSuccess('Data customer berhasil dihapus');
     }
 }
