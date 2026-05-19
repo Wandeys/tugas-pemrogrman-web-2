@@ -37,10 +37,20 @@ class CustomerController extends Controller
         'phone' => ['required','numeric'],
         'address' => ['required','max:255'],
         'join_date' => ['required','date'],
+    ],[
+        'name.required'=> 'Nama tidak boleh kosong',
+        'name.max'=> 'Nama tidak boleh lebih dari :max karakter',
+        'email.required'=> 'Email tidak boleh kosong',
+        'email.email'=> 'Email tidak valid',
+        'phone.required'=> 'Phone tidak boleh kosong',
+        'phone.numeric'=> 'Phone harus berupa angka',
+        'address.required'=> 'Address tidak boleh kosong',
+        'join_date.required'=> 'Join Date tidak boleh kosong',
+        'join_date.date'=> 'Join Date tidak valid',
     ]);
  
-    
-    return redirect('/customer');
+  Customer::create( $validated );
+  return to_route('customer.index')->withSuccess('Customer berhasil ditambahkan');
     }
 
     /**

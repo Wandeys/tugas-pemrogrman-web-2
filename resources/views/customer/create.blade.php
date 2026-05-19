@@ -10,28 +10,52 @@
 
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                name="name"value="{{ old('name') }}">
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                name="email"value="{{ old('email') }}">
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="number" class="form-control" id="phone" name="phone">
+            <input type="number" class="form-control @error('phone') is-invalid @enderror" id="phone"
+                name="phone"value="{{ old('phone') }}">
+            @error('phone')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address">
+            <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
+                name="address"value="{{ old('address') }}">
+            @error('address')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-3">
             <label for="join_date" class="form-label">Join Date</label>
-            <input type="date" class="form-control" id="join_date" name="join_date">
+            <input type="date" class="form-control @error('join_date') is-invalid @enderror" id="join_date"
+                name="join_date"value="{{ old('join_date') }}">
+            @error('join_date')
+                <div class="invalid-feedback    ">{{ $message }}</div>
+            @enderror
+
         </div>
 
 
