@@ -5,6 +5,15 @@
         {{ $title }}
     </x-slot>
 
+    <ul class="list-group">
+        @foreach ($customers as $customer)
+            <li class="list-group-item">
+                {{ $loop->iteration }}.
+                {{ $customer->name }}--{{ $customer->email }}--{{ $customer->phone }}--{{ $customer->address }}--{{ $customer->join_date }}
+            </li>
+        @endforeach
 
-    <h1 class="fw-bold">Data Customer</h1>
+
+    </ul>
+
 </x-app>
