@@ -19,6 +19,9 @@
             <li class="list-group-item">
                 {{ $loop->iteration }}.
                 {{ $customer->name }}--{{ $customer->email }}--{{ $customer->phone }}--{{ $customer->address }}--{{ $customer->join_date }}
+
+                <a class="btn btn-warning btn-sm" href="{{ route('customer.edit', $customer) }}" role="button">edit</a>
+
             </li>
         @endforeach
 
