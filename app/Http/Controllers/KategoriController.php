@@ -12,7 +12,17 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+
+    $kategoris = Kategori::latest();
+    $keyword = request('keyword');
+if($kategoris){
+ $kategoris ->where('name','like','%'. $keyword . '%');
+}
+
+        return view('kategori.index', [
+            'title' => 'Kategori',
+            'kategoris'=> $kategoris->paginate(5)->withQueryString(),
+            ]);
     }
 
     /**

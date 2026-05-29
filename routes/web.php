@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,4 +16,6 @@ Route::post('/customer/store', [CustomerController::class, 'store'])->name('cust
 Route::get('/customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::put('/customer/{customer}', [CustomerController::class, 'update'])->name('customer.update');
 Route::delete('/customer/{customer}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+
+Route::resource('kategori', KategoriController::class);
 
