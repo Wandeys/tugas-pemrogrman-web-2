@@ -34,7 +34,10 @@
                 {{ $kategoris->firstItem() + $loop->index }}.
                 {{ $kategori->name_kategori }}--{{ $kategori->deskripsi }}--{{ $kategori->kode_kategori }}
 
-                <a class="btn btn-warning btn-sm" href="{{ route('kategori.edit', $kategori) }}" role="button">edit</a>
+                <a class="btn btn-info btn-sm" href="{{ route('kategori.show', $kategori) }}"
+                    role="button">Detail</a>
+                <a class="btn btn-warning btn-sm" href="{{ route('kategori.edit', $kategori) }}"
+                    role="button">edit</a>
                 <form action="{{ route('kategori.destroy', $kategori) }}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf

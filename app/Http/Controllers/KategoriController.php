@@ -59,7 +59,10 @@ if($kategoris){
      */
     public function show(Kategori $kategori)
     {
-        //
+       return view('kategori.show', [
+            'title' => 'Detail Kategori',
+    'kategori'=> $kategori,
+            ]);
     }
 
     /**
