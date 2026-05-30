@@ -16,7 +16,7 @@ class KategoriController extends Controller
     $kategoris = Kategori::latest();
     $keyword = request('keyword');
 if($kategoris){
- $kategoris ->where('name','like','%'. $keyword . '%');
+ $kategoris ->where('name_kategori','like','%'. $keyword . '%');
 }
 
         return view('kategori.index', [
@@ -30,15 +30,28 @@ if($kategoris){
      */
     public function create()
     {
-        //
+               return view('kategori.create', ['title' => 'Create Kategori']);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+   {
+        $validated = $request->validate([
+        'name_kategori' => ['required','max:255'],
+        'deskripsi' => ['required','max:255'],
+        'kode_kategori' => ['required','unique:kategoris'],
+    ],[
+        'name_kategori.required'=> 'Nama Kategori tidak boleh kosong',
+        'name_kategori.max'=> 'Nama Kategori tidak boleh lebih dari :max karakter',
+        'deskripsi.required'=> 'Deskripsi tidak boleh kosong',
+        'kode_kategori.required'=> 'Kode Kategori tidak boleh kosong',
+        'kode_kategori.unique'=> 'Kode Kategori sudah digunakan',
+    ]);
+ 
+  Kategori::create( $validated );
+  return to_route('kategori.index')->withSuccess('Kategori berhasil ditambahkan');
     }
 
     /**
