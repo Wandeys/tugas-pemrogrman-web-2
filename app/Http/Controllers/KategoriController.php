@@ -102,6 +102,7 @@ if($kategoris){
      */
     public function destroy(Kategori $kategori)
     {
-        //
+       $kategori->delete( $kategori);
+  return to_route('kategori.index')->withSuccess('Data kategori berhasil dihapus');
     }
 }
