@@ -67,15 +67,34 @@ if($kategoris){
      */
     public function edit(Kategori $kategori)
     {
-        //
+      return view('kategori.edit', [
+            'title' => 'Edit Kategori',
+            'kategori'=> $kategori,
+            ]);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Kategori $kategori)
-    {
-        //
+     {
+ 
+        $validated = $request->validate([
+        'name_kategori' => ['required','max:255'],
+        'deskripsi' => ['required','max:255'],
+        'kode_kategori' => ['required','unique:kategoris'],
+    ],[
+        'name_kategori.required'=> 'Nama Kategori tidak boleh kosong',
+        'name_kategori.max'=> 'Nama Kategori tidak boleh lebih dari :max karakter',
+        'deskripsi.required'=> 'Deskripsi tidak boleh kosong',
+        'kode_kategori.required'=> 'Kode Kategori tidak boleh kosong',
+        'kode_kategori.unique'=> 'Kode Kategori sudah digunakan',
+    ]);
+ 
+    $kategori->update( $validated );
+    return to_route('kategori.index')->withSuccess('Data kategori berhasil diubah');
+    
     }
 
     /**
