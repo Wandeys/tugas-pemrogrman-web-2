@@ -12,7 +12,16 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+    $produks =  Produk::latest();
+    $keyword = request('keyword');
+   if($produks){
+    $produks->where('name','like','%'. $keyword .'%');
+   }
+
+ return view('produk.index', [
+            'title' => 'Produk',
+            'produks'=>$produks->paginate(15)->withQueryString(),
+            ]);
     }
 
     /**

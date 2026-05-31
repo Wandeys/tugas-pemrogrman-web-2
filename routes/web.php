@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,4 +19,5 @@ Route::put('/customer/{customer}', [CustomerController::class, 'update'])->name(
 Route::delete('/customer/{customer}', [CustomerController::class, 'destroy'])->name('customer.destroy');
 
 Route::resource('kategori', KategoriController::class);
+Route::resource('produk', ProdukController::class);
 
