@@ -79,7 +79,11 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        //
+        return view('produk.edit', [
+            'title' => 'Edit Produk',
+            'kategoris' => Kategori::latest()->get(),
+            'produk'=> $produk,
+        ]);
     }
 
     /**
@@ -87,7 +91,31 @@ class ProdukController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
-        //
+           {
+        $validated = $request->validate([
+        'name' => ['required','max:255'],
+        'kategori_id' => ['required','exists:kategoris,id'],
+        'harga' => ['required','numeric','min:0'],
+        'stok' => ['required','integer','min:0'],
+        'bahan' => ['required','max:255'],
+    ],[
+        'name.required'=> 'Nama tidak boleh kosong',
+        'name.max'=> 'Nama tidak boleh lebih dari :max karakter',
+        'kategori_id.required'=> 'Jenis produk tidak boleh kosong',
+        'kategori_id.exists'=> 'Jenis produk tidak valid',
+        'harga.required'=> 'Harga tidak boleh kosong',
+        'harga.numeric'=> 'Harga harus berupa angka',
+        'harga.min'=> 'Harga tidak boleh kurang dari :min',
+        'stok.required'=> 'Stok tidak boleh kosong',
+        'stok.integer'=> 'Stok harus berupa angka',
+        'stok.min'=> 'Stok tidak boleh kurang dari :min',
+        'bahan.required'=> 'Bahan tidak boleh kosong',
+        'bahan.max'=> 'Bahan tidak boleh lebih dari :max karakter',
+    ]);
+ 
+  $produk->update( $validated );
+  return to_route('produk.index')->withSuccess('Produk berhasil diubah');
+    }
     }
 
     /**
