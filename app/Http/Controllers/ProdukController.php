@@ -123,6 +123,7 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        //
+      $produk->delete( $produk );
+  return to_route('produk.index')->withSuccess('Data produk berhasil dihapus');
     }
 }

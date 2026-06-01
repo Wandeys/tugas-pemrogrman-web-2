@@ -13,6 +13,8 @@ class Produk extends Model
     /** @use HasFactory<\Database\Factories\ProdukFactory> */
     use HasFactory;
 
+    protected $with = ['kategori'];
+
       public function kategori(): BelongsTo
     {
         return $this->belongsTo(Kategori::class);
