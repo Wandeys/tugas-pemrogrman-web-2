@@ -17,9 +17,19 @@
     <form action="">
 
         <div class="row g-3 mb-3">
-            <div class="col md-8">
+            <div class="col md-4">
                 <input type="text" class="form-control" id="keyword" name="keyword"
-                    placeholder="Search produk name...">
+                    placeholder="Search produk name..." value="{{ request('keyword') }}">
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="kategori_id" name="kategori_id">
+                    <option value="">All Kategori</option>
+                    @foreach ($kategoris as $kategori)
+                        <option value="{{ $kategori->id }}"{{ request('kategori_id') == $kategori->id ? 'selected':}}>
+                            {{ $kategori->name_kategori }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-4">
                 <button type="submit" class="btn btn-success">Search</button>
@@ -27,7 +37,6 @@
         </div>
 
     </form>
-
 
 
 

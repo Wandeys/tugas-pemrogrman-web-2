@@ -61,7 +61,7 @@ if($kategoris){
     {
        return view('kategori.show', [
             'title' => 'Detail Kategori',
-    'kategori'=> $kategori,
+             'kategori'=> $kategori,
             ]);
     }
 

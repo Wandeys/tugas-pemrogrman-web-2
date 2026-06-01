@@ -17,10 +17,18 @@ class ProdukController extends Controller
         $keyword = request('keyword');
         if ($produks) {
             $produks->where('name', 'like', '%'.$keyword.'%');
+
+            }
+        $kategori_id = request('kategori_id');
+        if ($kategori_id) {
+            $produks->where('kategori_id', $kategori_id);
         }
+
+       
 
         return view('produk.index', [
             'title' => 'Produk',
+            'kategoris' => Kategori::latest()->get(),
             'produks' => $produks->paginate(15)->withQueryString(),
         ]);
     }
