@@ -25,7 +25,8 @@
                 <select class="form-select" id="kategori_id" name="kategori_id">
                     <option value="">All Kategori</option>
                     @foreach ($kategoris as $kategori)
-                        <option value="{{ $kategori->id }}"{{ request('kategori_id') == $kategori->id ? 'selected':}}>
+                        <option value= "{{ $kategori->id }}"
+                            {{ request('kategori_id') == $kategori->id ? 'selected' : '' }}>
                             {{ $kategori->name_kategori }}
                         </option>
                     @endforeach
