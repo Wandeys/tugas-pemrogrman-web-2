@@ -20,7 +20,15 @@
                 {{ $loop->iteration }}.
                 {{ $customer->name }}--{{ $customer->email }}--{{ $customer->phone }}--{{ $customer->address }}--{{ $customer->join_date }}--{{ $customer->gender }}
 
-                <a class="btn btn-warning btn-sm" href="{{ route('customer.edit', $customer) }}" role="button">edit</a>
+                </form>
+                <form action="{{ route('customer.restore', $customer) }}" method="POST" class="d-inline">
+                    @method('PUT')
+                    @csrf
+
+                    <button type="submit" class="btn btn-warning btn-sm"
+                        onclick="return confirm('Are you sure/Anda Yakin Ingin Mengembalikan Data?')">Restore</button>
+
+                </form>
                 <form action="{{ route('customer.destroy', $customer) }}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
