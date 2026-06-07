@@ -21,6 +21,7 @@ Route::delete('/customer/{customer}', [CustomerController::class, 'destroy'])->n
 //soft deletes
 Route::get('/customer/trash', [CustomerController::class, 'trash'])->name('customer.trash');
 Route::put('/customer/{customer}/restore', [CustomerController::class, 'restore'])->name('customer.restore')->withTrashed();
+Route::delete('/customer/{customer}/force-delete', [CustomerController::class, 'forceDelete'])->name('customer.forceDelete')->withTrashed();
 
 
 Route::resource('kategori', KategoriController::class);

@@ -133,7 +133,11 @@ $customer->restore();
   return to_route('customer.trash')->withSuccess('Data customer berhasil dikembalikan');
     }
 
-
+public function forceDelete(Customer $customer)
+    {
+$customer->forceDelete();
+  return to_route('customer.trash')->withSuccess('Data customer berhasil dihapus secara permanent');
+    }
 
 
 }

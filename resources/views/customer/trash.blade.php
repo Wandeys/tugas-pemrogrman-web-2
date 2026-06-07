@@ -29,12 +29,12 @@
                         onclick="return confirm('Anda Yakin Ingin Mengembalikan Data?')">Restore</button>
 
                 </form>
-                <form action="{{ route('customer.destroy', $customer) }}" method="POST" class="d-inline">
+                <form action="{{ route('customer.forceDelete', $customer) }}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
 
                     <button type="submit" class="btn btn-danger btn-sm"
-                        onclick="return confirm('Are you sure/Anda Yakin?')">Delete</button>
+                        onclick="return confirm('Anda Yakin Ingin Menghapus Secara Permanent?')">ForceDelete</button>
 
                 </form>
 
