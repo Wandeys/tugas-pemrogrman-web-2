@@ -88,6 +88,7 @@ class CustomerController extends Controller
         'phone' => ['required','numeric'],
         'address' => ['required','max:255'],
         'join_date' => ['required','date'],
+        'gender'=>['required','in:Male,Female'],
     ],[
         'name.required'=> 'Nama tidak boleh kosong',
         'name.max'=> 'Nama tidak boleh lebih dari :max karakter',
@@ -98,6 +99,8 @@ class CustomerController extends Controller
         'address.required'=> 'Address tidak boleh kosong',
         'join_date.required'=> 'Join Date tidak boleh kosong',
         'join_date.date'=> 'Join Date tidak valid',
+        'gender.required'=>'Gender tidak boleh kosong',
+        'gender.in:Male,Female'=>'Pilih salah satu Male atau Female',
     ]);
  
 $customer->update( $validated );
