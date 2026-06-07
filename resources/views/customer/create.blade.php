@@ -53,11 +53,21 @@
             <input type="date" class="form-control @error('join_date') is-invalid @enderror" id="join_date"
                 name="join_date"value="{{ old('join_date') }}">
             @error('join_date')
-                <div class="invalid-feedback    ">{{ $message }}</div>
+                <div class="invalid-feedback">{{ $message }}</div>
             @enderror
 
         </div>
 
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender">
+                <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+            </select>
+            @error('gender')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
 
         <a class="btn btn-warning" href="{{ route('customer.index') }}" role="button">Cancel</a>

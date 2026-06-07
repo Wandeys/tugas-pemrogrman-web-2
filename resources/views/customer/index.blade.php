@@ -18,7 +18,7 @@
         @foreach ($customers as $customer)
             <li class="list-group-item">
                 {{ $loop->iteration }}.
-                {{ $customer->name }}--{{ $customer->email }}--{{ $customer->phone }}--{{ $customer->address }}--{{ $customer->join_date }}
+                {{ $customer->name }}--{{ $customer->email }}--{{ $customer->phone }}--{{ $customer->address }}--{{ $customer->join_date }}--{{ $customer->gender }}
 
                 <a class="btn btn-warning btn-sm" href="{{ route('customer.edit', $customer) }}" role="button">edit</a>
                 <form action="{{ route('customer.destroy', $customer) }}" method="POST" class="d-inline">
