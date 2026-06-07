@@ -127,4 +127,13 @@ public function trash()
     }
 
 
+public function restore(Customer $customer)
+    {
+$customer->restore();
+  return to_route('customer.trash')->withSuccess('Data customer berhasil dikembalikan');
+    }
+
+
+
+
 }

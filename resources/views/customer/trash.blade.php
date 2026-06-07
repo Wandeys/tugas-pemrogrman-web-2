@@ -26,7 +26,7 @@
                     @csrf
 
                     <button type="submit" class="btn btn-warning btn-sm"
-                        onclick="return confirm('Are you sure/Anda Yakin Ingin Mengembalikan Data?')">Restore</button>
+                        onclick="return confirm('Anda Yakin Ingin Mengembalikan Data?')">Restore</button>
 
                 </form>
                 <form action="{{ route('customer.destroy', $customer) }}" method="POST" class="d-inline">
